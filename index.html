@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="fr" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>بيت العطور — تازة</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<title>Maison des Parfums — Taza</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Tajawal:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
     --gold: #C9A84C;
@@ -23,17 +23,58 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: 'Tajawal', sans-serif;
+    font-family: 'Cormorant Garamond', serif;
     background: var(--cream);
     color: var(--text-main);
-    direction: rtl;
     overflow-x: hidden;
+    transition: direction 0.3s;
+  }
+
+  body.ar {
+    font-family: 'Tajawal', sans-serif;
+    direction: rtl;
+  }
+  body.en, body.fr {
+    direction: ltr;
+  }
+
+  /* ── LANG SWITCHER ── */
+  .lang-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+    background: var(--dark);
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 4vw;
+    gap: 4px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+  .lang-btn {
+    background: transparent;
+    border: 1px solid rgba(201,168,76,0.3);
+    color: rgba(240,232,208,0.5);
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding: 4px 12px;
+    border-radius: 2px;
+    cursor: pointer;
+    font-family: 'Tajawal', sans-serif;
+    transition: all 0.25s;
+  }
+  .lang-btn:hover, .lang-btn.active {
+    background: var(--gold);
+    color: var(--dark);
+    border-color: var(--gold);
+    font-weight: 700;
   }
 
   /* ── NAV ── */
   nav {
     position: fixed;
-    top: 0; left: 0; right: 0;
+    top: 36px; left: 0; right: 0;
     z-index: 100;
     background: rgba(26, 18, 8, 0.96);
     backdrop-filter: blur(12px);
@@ -75,6 +116,7 @@
     font-weight: 400;
     letter-spacing: 1px;
     transition: color 0.3s;
+    font-family: 'Tajawal', sans-serif;
   }
   .nav-links a:hover { color: var(--gold); }
 
@@ -105,7 +147,7 @@
     justify-content: center;
     position: relative;
     overflow: hidden;
-    padding-top: 72px;
+    padding-top: 108px;
   }
 
   .hero-bg-pattern {
@@ -118,26 +160,22 @@
 
   .hero-ornament {
     position: absolute;
-    width: 600px;
-    height: 600px;
+    width: 600px; height: 600px;
     border-radius: 50%;
     border: 1px solid rgba(201,168,76,0.1);
-    top: 50%;
-    left: 50%;
+    top: 50%; left: 50%;
     transform: translate(-50%, -50%);
   }
   .hero-ornament::before {
     content: '';
     position: absolute;
-    inset: 40px;
-    border-radius: 50%;
+    inset: 40px; border-radius: 50%;
     border: 1px solid rgba(201,168,76,0.07);
   }
   .hero-ornament::after {
     content: '';
     position: absolute;
-    inset: 80px;
-    border-radius: 50%;
+    inset: 80px; border-radius: 50%;
     border: 1px solid rgba(201,168,76,0.05);
   }
 
@@ -161,6 +199,7 @@
     font-weight: 400;
     margin-bottom: 24px;
     text-transform: uppercase;
+    font-family: 'Tajawal', sans-serif;
   }
 
   .hero-title {
@@ -170,18 +209,16 @@
     line-height: 1.05;
     margin-bottom: 12px;
   }
-  .hero-title em {
-    font-style: italic;
-    color: var(--gold);
-  }
+  .hero-title em { font-style: italic; color: var(--gold); }
 
   .hero-subtitle {
-    font-size: 16px;
+    font-size: 17px;
     color: rgba(240,232,208,0.65);
     font-weight: 300;
     line-height: 1.7;
     margin-bottom: 48px;
     letter-spacing: 0.5px;
+    font-family: 'Tajawal', sans-serif;
   }
 
   .hero-ctas {
@@ -225,20 +262,7 @@
   }
   .btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
 
-  /* ── DIVIDER ── */
-  .ornament-divider {
-    text-align: center;
-    margin: 60px 0 40px;
-    color: var(--gold);
-    font-size: 20px;
-    letter-spacing: 16px;
-    opacity: 0.6;
-  }
-
-  /* ── SECTION ── */
-  section {
-    padding: 80px 4vw;
-  }
+  section { padding: 80px 4vw; }
 
   .section-label {
     font-size: 10px;
@@ -247,6 +271,7 @@
     font-weight: 400;
     text-transform: uppercase;
     margin-bottom: 12px;
+    font-family: 'Tajawal', sans-serif;
   }
 
   .section-title {
@@ -259,13 +284,14 @@
 
   .section-desc {
     color: var(--text-muted);
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.8;
     max-width: 520px;
     font-weight: 300;
+    font-family: 'Tajawal', sans-serif;
   }
 
-  /* ── FEATURED BANNER ── */
+  /* ── FEATURED ── */
   .featured {
     background: var(--dark);
     position: relative;
@@ -291,8 +317,7 @@
   }
 
   .bottle-silhouette {
-    width: 160px;
-    height: 280px;
+    width: 160px; height: 280px;
     background: linear-gradient(160deg, rgba(201,168,76,0.15), rgba(201,168,76,0.05));
     border: 1px solid rgba(201,168,76,0.3);
     border-radius: 50% 50% 10px 10px / 30% 30% 10px 10px;
@@ -302,11 +327,9 @@
   .bottle-silhouette::before {
     content: '';
     position: absolute;
-    top: -30px;
-    left: 50%;
+    top: -30px; left: 50%;
     transform: translateX(-50%);
-    width: 28px;
-    height: 30px;
+    width: 28px; height: 30px;
     background: rgba(201,168,76,0.2);
     border: 1px solid rgba(201,168,76,0.3);
     border-radius: 4px 4px 0 0;
@@ -314,8 +337,7 @@
   .bottle-silhouette::after {
     content: '✦';
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     font-size: 32px;
     color: var(--gold);
@@ -329,8 +351,7 @@
 
   .featured-halo {
     position: absolute;
-    width: 320px;
-    height: 320px;
+    width: 320px; height: 320px;
     border-radius: 50%;
     background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
     pointer-events: none;
@@ -338,6 +359,7 @@
 
   .featured-text .section-title { color: var(--cream); }
   .featured-text .section-desc  { color: rgba(240,232,208,0.55); }
+
   .featured-tag {
     display: inline-block;
     background: rgba(201,168,76,0.12);
@@ -348,7 +370,9 @@
     padding: 6px 14px;
     border-radius: 2px;
     margin-bottom: 24px;
+    font-family: 'Tajawal', sans-serif;
   }
+
   .featured-price {
     margin: 32px 0;
     display: flex;
@@ -364,12 +388,11 @@
     font-size: 13px;
     color: rgba(201,168,76,0.5);
     letter-spacing: 2px;
+    font-family: 'Tajawal', sans-serif;
   }
 
-  /* ── PRODUCTS GRID ── */
-  .products-section {
-    background: var(--cream-2);
-  }
+  /* ── PRODUCTS ── */
+  .products-section { background: var(--cream-2); }
 
   .products-header {
     display: flex;
@@ -415,8 +438,7 @@
   }
 
   .product-img-inner {
-    width: 80px;
-    height: 140px;
+    width: 80px; height: 140px;
     background: linear-gradient(160deg, rgba(201,168,76,0.2), rgba(201,168,76,0.06));
     border: 1px solid rgba(201,168,76,0.35);
     border-radius: 40% 40% 8px 8px / 20% 20% 8px 8px;
@@ -427,11 +449,9 @@
   .product-img-inner::before {
     content: '';
     position: absolute;
-    top: -16px;
-    left: 50%;
+    top: -16px; left: 50%;
     transform: translateX(-50%);
-    width: 14px;
-    height: 18px;
+    width: 14px; height: 18px;
     background: rgba(201,168,76,0.2);
     border: 1px solid rgba(201,168,76,0.3);
     border-radius: 3px 3px 0 0;
@@ -439,8 +459,7 @@
 
   .product-badge {
     position: absolute;
-    top: 14px;
-    left: 14px;
+    top: 14px; left: 14px;
     background: var(--gold);
     color: var(--dark);
     font-size: 10px;
@@ -448,11 +467,10 @@
     letter-spacing: 1.5px;
     padding: 4px 10px;
     border-radius: 2px;
+    font-family: 'Tajawal', sans-serif;
   }
 
-  .product-body {
-    padding: 20px 20px 24px;
-  }
+  .product-body { padding: 20px 20px 24px; }
 
   .product-family {
     font-size: 10px;
@@ -460,6 +478,7 @@
     color: var(--gold);
     font-weight: 500;
     margin-bottom: 6px;
+    font-family: 'Tajawal', sans-serif;
   }
 
   .product-name {
@@ -477,6 +496,7 @@
     letter-spacing: 0.5px;
     margin-bottom: 20px;
     line-height: 1.6;
+    font-family: 'Tajawal', sans-serif;
   }
 
   .product-footer {
@@ -502,8 +522,7 @@
     background: var(--dark);
     color: var(--gold);
     border: 1px solid var(--dark-3);
-    width: 40px;
-    height: 40px;
+    width: 40px; height: 40px;
     border-radius: 2px;
     cursor: pointer;
     font-size: 22px;
@@ -513,21 +532,11 @@
     transition: all 0.25s;
     flex-shrink: 0;
   }
-  .btn-add:hover {
-    background: var(--gold);
-    color: var(--dark);
-    border-color: var(--gold);
-  }
+  .btn-add:hover { background: var(--gold); color: var(--dark); border-color: var(--gold); }
 
-  /* ── COLLECTIONS BAR ── */
-  .collections {
-    background: var(--dark);
-    padding: 60px 4vw;
-  }
-  .collections-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+  /* ── COLLECTIONS ── */
+  .collections { background: var(--dark); padding: 60px 4vw; }
+  .collections-inner { max-width: 1200px; margin: 0 auto; }
   .collections-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -560,8 +569,7 @@
     font-size: 48px;
     color: rgba(201,168,76,0.12);
     position: absolute;
-    top: 16px;
-    left: 20px;
+    top: 16px; left: 20px;
     line-height: 1;
   }
   .collection-name {
@@ -575,7 +583,7 @@
     color: rgba(240,232,208,0.45);
     font-weight: 300;
     line-height: 1.7;
-    letter-spacing: 0.3px;
+    font-family: 'Tajawal', sans-serif;
   }
   .collection-arrow {
     margin-top: 24px;
@@ -584,9 +592,9 @@
     transition: transform 0.3s;
     display: inline-block;
   }
-  .collection-tile:hover .collection-arrow { transform: translateX(-6px); }
+  .collection-tile:hover .collection-arrow { transform: translateX(6px); }
 
-  /* ── WHY US ── */
+  /* ── WHY ── */
   .why-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -594,13 +602,9 @@
     max-width: 1000px;
     margin: 48px auto 0;
   }
-  .why-card {
-    text-align: center;
-    padding: 32px 20px;
-  }
+  .why-card { text-align: center; padding: 32px 20px; }
   .why-icon {
-    width: 56px;
-    height: 56px;
+    width: 56px; height: 56px;
     background: var(--gold-pale);
     border-radius: 50%;
     display: flex;
@@ -620,26 +624,21 @@
     color: var(--text-light);
     font-weight: 300;
     line-height: 1.7;
+    font-family: 'Tajawal', sans-serif;
   }
 
   /* ── TESTIMONIALS ── */
-  .testimonials {
-    background: var(--dark-2);
-    padding: 80px 4vw;
-  }
-  .testimonials-inner {
-    max-width: 900px;
-    margin: 0 auto;
-    text-align: center;
-  }
+  .testimonials { background: var(--dark-2); padding: 80px 4vw; }
+  .testimonials-inner { max-width: 900px; margin: 0 auto; text-align: center; }
   .testimonials-inner .section-title { color: var(--cream); }
   .testi-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 24px;
     margin-top: 48px;
-    text-align: right;
+    text-align: left;
   }
+  body.ar .testi-grid { text-align: right; }
   .testi-card {
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(201,168,76,0.15);
@@ -647,61 +646,26 @@
     padding: 28px 24px;
   }
   .testi-stars { color: var(--gold); font-size: 13px; letter-spacing: 3px; margin-bottom: 14px; }
-  .testi-text  { font-size: 14px; color: rgba(240,232,208,0.65); line-height: 1.8; font-weight: 300; margin-bottom: 20px; }
+  .testi-text  { font-size: 14px; color: rgba(240,232,208,0.65); line-height: 1.8; font-weight: 300; margin-bottom: 20px; font-family: 'Tajawal', sans-serif; }
   .testi-author { font-family: 'Playfair Display', serif; font-size: 15px; color: var(--gold-light); }
-  .testi-city   { font-size: 11px; color: rgba(201,168,76,0.45); letter-spacing: 2px; margin-top: 3px; }
+  .testi-city   { font-size: 11px; color: rgba(201,168,76,0.45); letter-spacing: 2px; margin-top: 3px; font-family: 'Tajawal', sans-serif; }
 
   /* ── FOOTER ── */
-  footer {
-    background: var(--dark);
-    border-top: 1px solid rgba(201,168,76,0.12);
-    padding: 60px 4vw 32px;
-  }
-  .footer-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+  footer { background: var(--dark); border-top: 1px solid rgba(201,168,76,0.12); padding: 60px 4vw 32px; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
   .footer-top {
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr;
     gap: 48px;
     margin-bottom: 48px;
   }
-  .footer-brand-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    color: var(--gold);
-    margin-bottom: 8px;
-  }
-  .footer-tagline {
-    font-size: 12px;
-    letter-spacing: 4px;
-    color: rgba(201,168,76,0.45);
-    font-weight: 300;
-    margin-bottom: 20px;
-  }
-  .footer-about {
-    font-size: 13px;
-    color: rgba(240,232,208,0.4);
-    font-weight: 300;
-    line-height: 1.8;
-  }
-  .footer-heading {
-    font-size: 11px;
-    letter-spacing: 3px;
-    color: var(--gold);
-    font-weight: 500;
-    margin-bottom: 20px;
-  }
+  .footer-brand-name { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--gold); margin-bottom: 8px; }
+  .footer-tagline { font-size: 12px; letter-spacing: 4px; color: rgba(201,168,76,0.45); font-weight: 300; margin-bottom: 20px; font-family: 'Tajawal', sans-serif; }
+  .footer-about { font-size: 13px; color: rgba(240,232,208,0.4); font-weight: 300; line-height: 1.8; font-family: 'Tajawal', sans-serif; }
+  .footer-heading { font-size: 11px; letter-spacing: 3px; color: var(--gold); font-weight: 500; margin-bottom: 20px; font-family: 'Tajawal', sans-serif; }
   .footer-links { list-style: none; }
   .footer-links li { margin-bottom: 10px; }
-  .footer-links a {
-    font-size: 13px;
-    color: rgba(240,232,208,0.45);
-    text-decoration: none;
-    font-weight: 300;
-    transition: color 0.2s;
-  }
+  .footer-links a { font-size: 13px; color: rgba(240,232,208,0.45); text-decoration: none; font-weight: 300; transition: color 0.2s; font-family: 'Tajawal', sans-serif; }
   .footer-links a:hover { color: var(--gold); }
   .footer-bottom {
     border-top: 1px solid rgba(201,168,76,0.08);
@@ -712,18 +676,10 @@
     flex-wrap: wrap;
     gap: 12px;
   }
-  .footer-copy {
-    font-size: 12px;
-    color: rgba(240,232,208,0.25);
-    font-weight: 300;
-  }
-  .footer-city {
-    font-size: 12px;
-    letter-spacing: 3px;
-    color: rgba(201,168,76,0.3);
-  }
+  .footer-copy { font-size: 12px; color: rgba(240,232,208,0.25); font-weight: 300; font-family: 'Tajawal', sans-serif; }
+  .footer-city { font-size: 12px; letter-spacing: 3px; color: rgba(201,168,76,0.3); font-family: 'Tajawal', sans-serif; }
 
-  /* ── CART TOAST ── */
+  /* ── TOAST ── */
   .toast {
     position: fixed;
     bottom: 32px;
@@ -739,10 +695,10 @@
     transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
     z-index: 999;
     white-space: nowrap;
+    font-family: 'Tajawal', sans-serif;
   }
   .toast.show { transform: translateX(-50%) translateY(0); }
 
-  /* responsive */
   @media (max-width: 768px) {
     .featured-grid    { grid-template-columns: 1fr; }
     .featured-visual  { height: 240px; order: -1; }
@@ -752,22 +708,29 @@
   }
 </style>
 </head>
-<body>
+<body class="fr">
+
+<!-- LANG BAR -->
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+  <button class="lang-btn" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" onclick="setLang('ar')">عر</button>
+</div>
 
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
-    بيت العطور
-    <span>BAIT AL-3UTOUR · TAZA</span>
+    Maison des Parfums
+    <span data-key="nav_sub">TAZA — MAROC</span>
   </a>
   <ul class="nav-links">
-    <li><a href="#products">المجموعات</a></li>
-    <li><a href="#collections">الأنواع</a></li>
-    <li><a href="#about">من نحن</a></li>
-    <li><a href="#contact">تواصل</a></li>
+    <li><a href="#products" data-key="nav_collection">Collections</a></li>
+    <li><a href="#collections" data-key="nav_types">Familles</a></li>
+    <li><a href="#about" data-key="nav_about">À propos</a></li>
+    <li><a href="#contact" data-key="nav_contact">Contact</a></li>
   </ul>
-  <button class="nav-cart" onclick="showToast('سيتم إضافة سلة التسوق قريباً ✦')">
-    🛒 السلة
+  <button class="nav-cart" onclick="showToast(t('cart_added'))">
+    🛒 <span data-key="nav_cart">Panier</span>
   </button>
 </nav>
 
@@ -776,15 +739,14 @@
   <div class="hero-bg-pattern"></div>
   <div class="hero-ornament"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">✦ تازة — المغرب ✦</p>
-    <h1 class="hero-title">رائحة<br><em>الأصالة</em></h1>
-    <p class="hero-subtitle">
-      عطور فاخرة مستوحاة من روح المدينة وعمق التراث المغربي.<br>
-      من جبال الريف إلى قلب تازة.
+    <p class="hero-eyebrow">✦ <span data-key="hero_city">Taza — Maroc</span> ✦</p>
+    <h1 class="hero-title"><span data-key="hero_title1">L'Art du</span><br><em data-key="hero_title2">Parfum</em></h1>
+    <p class="hero-subtitle" data-key="hero_sub">
+      Des parfums d'exception inspirés de l'âme de la ville et de la profondeur du patrimoine marocain. Des montagnes du Rif au cœur de Taza.
     </p>
     <div class="hero-ctas">
-      <a href="#products" class="btn-primary">اكتشف المجموعة</a>
-      <a href="#featured" class="btn-outline">عطر الموسم</a>
+      <a href="#products" class="btn-primary" data-key="hero_cta1">Découvrir la Collection</a>
+      <a href="#featured" class="btn-outline" data-key="hero_cta2">Parfum de Saison</a>
     </div>
   </div>
 </section>
@@ -797,19 +759,18 @@
       <div class="bottle-silhouette"></div>
     </div>
     <div class="featured-text">
-      <div class="featured-tag">✦ إصدار خاص</div>
-      <p class="section-label">عطر الموسم</p>
-      <h2 class="section-title">نبضات تازة</h2>
-      <p class="section-desc">
-        تناغم بين عنبر الشرق وزهر الياسمين البربري، محاط بخشب العود والمسك الأبيض. 
-        عطر يحكي قصة مدينة عريقة في كل نفَس.
+      <div class="featured-tag">✦ <span data-key="feat_tag">Édition Spéciale</span></div>
+      <p class="section-label" data-key="feat_label">Parfum de Saison</p>
+      <h2 class="section-title" data-key="feat_title">Âme de Taza</h2>
+      <p class="section-desc" data-key="feat_desc">
+        Une harmonie entre l'ambre d'Orient et la fleur de jasmin berbère, enveloppée de bois d'oud et de musc blanc. Un parfum qui raconte l'histoire d'une cité millénaire à chaque souffle.
       </p>
       <div class="featured-price">
-        <span class="price-main">٣٩٠ درهم</span>
-        <span class="price-sub">٥٠ مل</span>
+        <span class="price-main">390 <span data-key="currency">MAD</span></span>
+        <span class="price-sub">50 ml</span>
       </div>
-      <button class="btn-primary" onclick="showToast('✦ تمت إضافة نبضات تازة للسلة')">
-        أضف للسلة
+      <button class="btn-primary" onclick="showToast(t('added_ame'))">
+        <span data-key="add_cart">Ajouter au Panier</span>
       </button>
     </div>
   </div>
@@ -819,102 +780,96 @@
 <section class="products-section" id="products">
   <div class="products-header">
     <div>
-      <p class="section-label">مجموعتنا</p>
-      <h2 class="section-title">عطور مختارة</h2>
+      <p class="section-label" data-key="prod_label">Notre Collection</p>
+      <h2 class="section-title" data-key="prod_title">Parfums Sélectionnés</h2>
     </div>
-    <a href="#" class="btn-outline" style="font-size:13px; padding:12px 24px;">عرض الكل</a>
+    <a href="#" class="btn-outline" style="font-size:13px; padding:12px 24px;" data-key="see_all">Voir Tout</a>
   </div>
   <div class="products-grid">
 
-    <div class="product-card" onclick="showToast('✦ تمت إضافة روح الريف للسلة')">
+    <div class="product-card">
       <div class="product-img">
         <div class="product-img-inner"></div>
-        <span class="product-badge">جديد</span>
+        <span class="product-badge" data-key="badge_new">Nouveau</span>
       </div>
       <div class="product-body">
-        <p class="product-family">عربي · شرقي</p>
-        <h3 class="product-name">روح الريف</h3>
-        <p class="product-notes">خشب العود · العنبر · المسك الأبيض · الصندل</p>
+        <p class="product-family" data-key="fam_oriental">Arabe · Oriental</p>
+        <h3 class="product-name" data-key="p1_name">Âme du Rif</h3>
+        <p class="product-notes" data-key="p1_notes">Oud · Ambre · Musc Blanc · Santal</p>
         <div class="product-footer">
-          <div class="product-price"><small>درهم</small>٣٢٠</div>
-          <button class="btn-add" onclick="event.stopPropagation(); showToast('✦ تمت إضافة روح الريف')">+</button>
+          <div class="product-price"><small data-key="currency">MAD</small> 320</div>
+          <button class="btn-add" onclick="showToast(t('added_rif'))">+</button>
         </div>
       </div>
     </div>
 
-    <div class="product-card" onclick="showToast('✦ تمت إضافة زهرة تازة للسلة')">
+    <div class="product-card">
       <div class="product-img">
         <div class="product-img-inner"></div>
-        <span class="product-badge" style="background:var(--cream); color:var(--dark);">الأكثر مبيعاً</span>
+        <span class="product-badge" style="background:var(--cream); color:var(--dark);" data-key="badge_best">Best-seller</span>
       </div>
       <div class="product-body">
-        <p class="product-family">زهري · ناعم</p>
-        <h3 class="product-name">زهرة تازة</h3>
-        <p class="product-notes">الياسمين · الورد الطائفي · المسك الوردي · الفانيليا</p>
+        <p class="product-family" data-key="fam_floral">Floral · Délicat</p>
+        <h3 class="product-name" data-key="p2_name">Fleur de Taza</h3>
+        <p class="product-notes" data-key="p2_notes">Jasmin · Rose de Taïf · Musc Rosé · Vanille</p>
         <div class="product-footer">
-          <div class="product-price"><small>درهم</small>٢٨٠</div>
-          <button class="btn-add" onclick="event.stopPropagation(); showToast('✦ تمت إضافة زهرة تازة')">+</button>
+          <div class="product-price"><small data-key="currency">MAD</small> 280</div>
+          <button class="btn-add" onclick="showToast(t('added_fleur'))">+</button>
         </div>
       </div>
     </div>
 
-    <div class="product-card" onclick="showToast('✦ تمت إضافة ليل جبلي للسلة')">
-      <div class="product-img">
-        <div class="product-img-inner"></div>
-      </div>
+    <div class="product-card">
+      <div class="product-img"><div class="product-img-inner"></div></div>
       <div class="product-body">
-        <p class="product-family">خشبي · غامض</p>
-        <h3 class="product-name">ليل جبلي</h3>
-        <p class="product-notes">الصندل · خشب الأرز · التبغ الدخاني · الكهرمان</p>
+        <p class="product-family" data-key="fam_woody">Boisé · Mystérieux</p>
+        <h3 class="product-name" data-key="p3_name">Nuit des Montagnes</h3>
+        <p class="product-notes" data-key="p3_notes">Santal · Cèdre · Tabac · Ambre</p>
         <div class="product-footer">
-          <div class="product-price"><small>درهم</small>٣٥٠</div>
-          <button class="btn-add" onclick="event.stopPropagation(); showToast('✦ تمت إضافة ليل جبلي')">+</button>
+          <div class="product-price"><small data-key="currency">MAD</small> 350</div>
+          <button class="btn-add" onclick="showToast(t('added_nuit'))">+</button>
         </div>
       </div>
     </div>
 
-    <div class="product-card" onclick="showToast('✦ تمت إضافة نسيم الفجر للسلة')">
+    <div class="product-card">
       <div class="product-img">
         <div class="product-img-inner"></div>
-        <span class="product-badge">محدود</span>
+        <span class="product-badge" data-key="badge_limited">Limité</span>
       </div>
       <div class="product-body">
-        <p class="product-family">حمضي · منعش</p>
-        <h3 class="product-name">نسيم الفجر</h3>
-        <p class="product-notes">البرغموت · النيرولي · اللافندر · خشب الغابة</p>
+        <p class="product-family" data-key="fam_citrus">Agrumes · Frais</p>
+        <h3 class="product-name" data-key="p4_name">Brise de l'Aube</h3>
+        <p class="product-notes" data-key="p4_notes">Bergamote · Néroli · Lavande · Bois de Forêt</p>
         <div class="product-footer">
-          <div class="product-price"><small>درهم</small>٢٦٠</div>
-          <button class="btn-add" onclick="event.stopPropagation(); showToast('✦ تمت إضافة نسيم الفجر')">+</button>
+          <div class="product-price"><small data-key="currency">MAD</small> 260</div>
+          <button class="btn-add" onclick="showToast(t('added_brise'))">+</button>
         </div>
       </div>
     </div>
 
-    <div class="product-card" onclick="showToast('✦ تمت إضافة سر العروس للسلة')">
-      <div class="product-img">
-        <div class="product-img-inner"></div>
-      </div>
+    <div class="product-card">
+      <div class="product-img"><div class="product-img-inner"></div></div>
       <div class="product-body">
-        <p class="product-family">أوريانتال · فاخر</p>
-        <h3 class="product-name">سر العروس</h3>
-        <p class="product-notes">العود · المسك · الزعفران · الورد البلغاري</p>
+        <p class="product-family" data-key="fam_luxury">Oriental · Luxueux</p>
+        <h3 class="product-name" data-key="p5_name">Secret de la Mariée</h3>
+        <p class="product-notes" data-key="p5_notes">Oud · Musc · Safran · Rose de Bulgarie</p>
         <div class="product-footer">
-          <div class="product-price"><small>درهم</small>٤٢٠</div>
-          <button class="btn-add" onclick="event.stopPropagation(); showToast('✦ تمت إضافة سر العروس')">+</button>
+          <div class="product-price"><small data-key="currency">MAD</small> 420</div>
+          <button class="btn-add" onclick="showToast(t('added_secret'))">+</button>
         </div>
       </div>
     </div>
 
-    <div class="product-card" onclick="showToast('✦ تمت إضافة أمواج طاطا للسلة')">
-      <div class="product-img">
-        <div class="product-img-inner"></div>
-      </div>
+    <div class="product-card">
+      <div class="product-img"><div class="product-img-inner"></div></div>
       <div class="product-body">
-        <p class="product-family">بحري · طازج</p>
-        <h3 class="product-name">أمواج طاطا</h3>
-        <p class="product-notes">الملح البحري · الأوزون · الصندل الأبيض · الأقحوان</p>
+        <p class="product-family" data-key="fam_marine">Marin · Frais</p>
+        <h3 class="product-name" data-key="p6_name">Vagues d'Océan</h3>
+        <p class="product-notes" data-key="p6_notes">Sel Marin · Ozone · Santal Blanc · Camomille</p>
         <div class="product-footer">
-          <div class="product-price"><small>درهم</small>٢٤٠</div>
-          <button class="btn-add" onclick="event.stopPropagation(); showToast('✦ تمت إضافة أمواج طاطا')">+</button>
+          <div class="product-price"><small data-key="currency">MAD</small> 240</div>
+          <button class="btn-add" onclick="showToast(t('added_vagues'))">+</button>
         </div>
       </div>
     </div>
@@ -925,55 +880,55 @@
 <!-- COLLECTIONS -->
 <section class="collections" id="collections">
   <div class="collections-inner">
-    <p class="section-label" style="color:var(--gold);">تصفح حسب</p>
-    <h2 class="section-title" style="color:var(--cream);">الأنواع والعوائل</h2>
+    <p class="section-label" style="color:var(--gold);" data-key="col_label">Parcourir par</p>
+    <h2 class="section-title" style="color:var(--cream);" data-key="col_title">Familles Olfactives</h2>
     <div class="collections-grid">
       <div class="collection-tile">
-        <span class="collection-num">٠١</span>
-        <h3 class="collection-name">الشرقي والعربي</h3>
-        <p class="collection-desc">عطور دافئة وعميقة، مستوحاة من الأسواق العربية والتراث الأصيل.</p>
+        <span class="collection-num">01</span>
+        <h3 class="collection-name" data-key="col1_name">Oriental & Arabe</h3>
+        <p class="collection-desc" data-key="col1_desc">Parfums chauds et profonds, inspirés des souks arabes et de l'héritage authentique.</p>
         <span class="collection-arrow">→</span>
       </div>
       <div class="collection-tile">
-        <span class="collection-num">٠٢</span>
-        <h3 class="collection-name">الزهري والرومانسي</h3>
-        <p class="collection-desc">باقة من أفخر الزهور العالمية، ناعمة وأنثوية بلمسة مغربية.</p>
+        <span class="collection-num">02</span>
+        <h3 class="collection-name" data-key="col2_name">Floral & Romantique</h3>
+        <p class="collection-desc" data-key="col2_desc">Un bouquet des plus belles fleurs du monde, doux et féminin avec une touche marocaine.</p>
         <span class="collection-arrow">→</span>
       </div>
       <div class="collection-tile">
-        <span class="collection-num">٠٣</span>
-        <h3 class="collection-name">الخشبي والطازج</h3>
-        <p class="collection-desc">توازن بين عمق الخشب ونقاء الطبيعة لروح حرة ومتجددة.</p>
+        <span class="collection-num">03</span>
+        <h3 class="collection-name" data-key="col3_name">Boisé & Frais</h3>
+        <p class="collection-desc" data-key="col3_desc">Un équilibre entre la profondeur du bois et la pureté de la nature pour un esprit libre.</p>
         <span class="collection-arrow">→</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WHY US -->
+<!-- WHY -->
 <section id="about" style="background:var(--cream); text-align:center;">
-  <p class="section-label">لماذا بيت العطور</p>
-  <h2 class="section-title">التزامنا بالجودة</h2>
+  <p class="section-label" data-key="why_label">Pourquoi Nous Choisir</p>
+  <h2 class="section-title" data-key="why_title">Notre Engagement Qualité</h2>
   <div class="why-grid">
     <div class="why-card">
       <div class="why-icon">🌹</div>
-      <h3 class="why-title">مكونات طبيعية</h3>
-      <p class="why-desc">نختار أجود المواد الخام من أصولها حول العالم.</p>
+      <h3 class="why-title" data-key="why1_title">Ingrédients Naturels</h3>
+      <p class="why-desc" data-key="why1_desc">Nous sélectionnons les meilleures matières premières depuis leurs origines à travers le monde.</p>
     </div>
     <div class="why-card">
       <div class="why-icon">✦</div>
-      <h3 class="why-title">صنع بيدوي</h3>
-      <p class="why-desc">كل زجاجة مصنوعة بعناية وحب من أيدي عطارينا.</p>
+      <h3 class="why-title" data-key="why2_title">Fabrication Artisanale</h3>
+      <p class="why-desc" data-key="why2_desc">Chaque flacon est fabriqué avec soin et amour par nos maîtres parfumeurs.</p>
     </div>
     <div class="why-card">
       <div class="why-icon">🚚</div>
-      <h3 class="why-title">توصيل لتازة</h3>
-      <p class="why-desc">توصيل سريع داخل المدينة وجميع أحياء تازة.</p>
+      <h3 class="why-title" data-key="why3_title">Livraison à Taza</h3>
+      <p class="why-desc" data-key="why3_desc">Livraison rapide dans toute la ville et tous les quartiers de Taza.</p>
     </div>
     <div class="why-card">
       <div class="why-icon">🎁</div>
-      <h3 class="why-title">تغليف فاخر</h3>
-      <p class="why-desc">كل طلب يصلك في صندوق هدايا أنيق يعكس قيمة هديتك.</p>
+      <h3 class="why-title" data-key="why4_title">Emballage Luxueux</h3>
+      <p class="why-desc" data-key="why4_desc">Chaque commande vous est livrée dans un élégant coffret cadeau qui reflète la valeur de votre présent.</p>
     </div>
   </div>
 </section>
@@ -981,42 +936,42 @@
 <!-- TESTIMONIALS -->
 <section class="testimonials">
   <div class="testimonials-inner">
-    <p class="section-label" style="color:var(--gold);">آراء عملائنا</p>
-    <h2 class="section-title">ماذا قالوا عنا</h2>
+    <p class="section-label" style="color:var(--gold);" data-key="testi_label">Avis de Nos Clients</p>
+    <h2 class="section-title" data-key="testi_title">Ce Qu'ils Disent</h2>
     <div class="testi-grid">
       <div class="testi-card">
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">ريحة "روح الريف" بقات معايا النهار كامل. عطر فاخر بحق وحقيقي من تازة.</p>
-        <p class="testi-author">فاطمة الزهراء</p>
-        <p class="testi-city">تازة المدينة</p>
+        <p class="testi-text" data-key="t1_text">Le parfum "Âme du Rif" m'a accompagné toute la journée. Un parfum vraiment luxueux, authentiquement de Taza.</p>
+        <p class="testi-author" data-key="t1_name">Fatima Zahra</p>
+        <p class="testi-city">Taza Ville</p>
       </div>
       <div class="testi-card">
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">شريت "سر العروس" كهدية للعرس وكان في قمة الأناقة. التغليف رائع والعطر أروع.</p>
-        <p class="testi-author">محمد أمين</p>
-        <p class="testi-city">حي الأمل، تازة</p>
+        <p class="testi-text" data-key="t2_text">J'ai acheté "Secret de la Mariée" comme cadeau de mariage, c'était le summum de l'élégance. L'emballage est magnifique.</p>
+        <p class="testi-author" data-key="t2_name">Mohammed Amine</p>
+        <p class="testi-city" data-key="t2_city">Quartier Amal, Taza</p>
       </div>
       <div class="testi-card">
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">أخيراً محل عطور بتازة يستاهل. الأسعار معقولة والجودة عالمية. نشكر الله عليكم.</p>
-        <p class="testi-author">نادية بنعلي</p>
-        <p class="tasti-city">باب المروج</p>
+        <p class="testi-text" data-key="t3_text">Enfin une parfumerie à Taza qui en vaut la peine. Les prix sont raisonnables et la qualité est internationale.</p>
+        <p class="testi-author" data-key="t3_name">Nadia Benali</p>
+        <p class="testi-city" data-key="t3_city">Bab Marrouj</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT STRIP -->
+<!-- CONTACT -->
 <section id="contact" style="background:var(--dark-3); padding:60px 4vw; text-align:center;">
-  <p class="section-label" style="color:var(--gold);">تواصل معنا</p>
-  <h2 class="section-title" style="color:var(--cream); margin-bottom:16px;">زورنا في تازة</h2>
-  <p style="color:rgba(240,232,208,0.5); font-size:14px; font-weight:300; margin-bottom:36px; letter-spacing:0.5px; line-height:1.8;">
-    شارع محمد الخامس، المدينة القديمة — تازة<br>
+  <p class="section-label" style="color:var(--gold);" data-key="contact_label">Nous Contacter</p>
+  <h2 class="section-title" style="color:var(--cream); margin-bottom:16px;" data-key="contact_title">Visitez-nous à Taza</h2>
+  <p style="color:rgba(240,232,208,0.5); font-size:14px; font-weight:300; margin-bottom:36px; line-height:1.8; font-family:'Tajawal',sans-serif;">
+    <span data-key="address">Avenue Mohammed V, Médina — Taza</span><br>
     📞 +212703581887<br>
-    ⏰ من الإثنين إلى السبت · ٩ صباحاً — ٩ مساءً
+    ⏰ <span data-key="hours">Lundi – Samedi · 9h – 21h</span>
   </p>
-  <a href="https://wa.me/212703581887" class="btn-primary" style="display:inline-block; text-decoration:none;">
-    تواصل عبر واتساب
+  <a href="https://wa.me/212703581887" class="btn-primary" style="display:inline-block; text-decoration:none;" data-key="whatsapp_btn">
+    Contacter via WhatsApp
   </a>
 </section>
 
@@ -1025,60 +980,208 @@
   <div class="footer-inner">
     <div class="footer-top">
       <div>
-        <div class="footer-brand-name">بيت العطور</div>
-        <div class="footer-tagline">BAIT AL-3UTOUR · TAZA</div>
-        <p class="footer-about">
-          محل عطور تازة الفاخر المتخصص في العطور المغربية والشرقية، 
-          نحمل إرث العطارة الأندلسية ونقدمها بلمسة عصرية راقية.
+        <div class="footer-brand-name">Maison des Parfums</div>
+        <div class="footer-tagline">TAZA — MAROC ✦ EST. 2024</div>
+        <p class="footer-about" data-key="footer_about">
+          La parfumerie de luxe de Taza, spécialisée dans les fragrances marocaines et orientales. Nous portons l'héritage de la parfumerie andalouse et le présentons avec une touche contemporaine raffinée.
         </p>
       </div>
       <div>
-        <p class="footer-heading">روابط سريعة</p>
+        <p class="footer-heading" data-key="footer_links">Liens Rapides</p>
         <ul class="footer-links">
-          <li><a href="#products">المجموعة الكاملة</a></li>
-          <li><a href="#collections">عوائل العطور</a></li>
-          <li><a href="#about">من نحن</a></li>
-          <li><a href="#contact">تواصل معنا</a></li>
+          <li><a href="#products" data-key="footer_collection">Collection Complète</a></li>
+          <li><a href="#collections" data-key="footer_families">Familles Olfactives</a></li>
+          <li><a href="#about" data-key="footer_about_link">À Propos</a></li>
+          <li><a href="#contact" data-key="footer_contact">Contactez-nous</a></li>
         </ul>
       </div>
       <div>
-        <p class="footer-heading">خدمات</p>
+        <p class="footer-heading" data-key="footer_services">Services</p>
         <ul class="footer-links">
-          <li><a href="#">تغليف هدايا</a></li>
-          <li><a href="#">توصيل منزلي</a></li>
-          <li><a href="#">عطر خاص بك</a></li>
-          <li><a href="#">طلبات الجملة</a></li>
+          <li><a href="#" data-key="svc1">Emballage Cadeau</a></li>
+          <li><a href="#" data-key="svc2">Livraison à Domicile</a></li>
+          <li><a href="#" data-key="svc3">Parfum Personnalisé</a></li>
+          <li><a href="#" data-key="svc4">Commandes en Gros</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy">© ٢٠٢٥ بيت العطور. جميع الحقوق محفوظة.</p>
-      <p class="footer-city">✦ تازة، المغرب ✦</p>
+      <p class="footer-copy" data-key="footer_copy">© 2025 Maison des Parfums. Tous droits réservés.</p>
+      <p class="footer-city">✦ Taza, Maroc ✦</p>
     </div>
   </div>
 </footer>
 
-<!-- TOAST -->
 <div class="toast" id="toast"></div>
 
 <script>
-  function showToast(msg) {
-    const t = document.getElementById('toast');
-    t.textContent = msg;
-    t.classList.add('show');
-    clearTimeout(t._timer);
-    t._timer = setTimeout(() => t.classList.remove('show'), 2800);
+const translations = {
+  fr: {
+    nav_sub: "TAZA — MAROC",
+    nav_collection: "Collections", nav_types: "Familles", nav_about: "À propos", nav_contact: "Contact", nav_cart: "Panier",
+    hero_city: "Taza — Maroc", hero_title1: "L'Art du", hero_title2: "Parfum",
+    hero_sub: "Des parfums d'exception inspirés de l'âme de la ville et de la profondeur du patrimoine marocain. Des montagnes du Rif au cœur de Taza.",
+    hero_cta1: "Découvrir la Collection", hero_cta2: "Parfum de Saison",
+    feat_tag: "Édition Spéciale", feat_label: "Parfum de Saison", feat_title: "Âme de Taza",
+    feat_desc: "Une harmonie entre l'ambre d'Orient et la fleur de jasmin berbère, enveloppée de bois d'oud et de musc blanc. Un parfum qui raconte l'histoire d'une cité millénaire à chaque souffle.",
+    currency: "MAD", add_cart: "Ajouter au Panier",
+    prod_label: "Notre Collection", prod_title: "Parfums Sélectionnés", see_all: "Voir Tout",
+    badge_new: "Nouveau", badge_best: "Best-seller", badge_limited: "Limité",
+    fam_oriental: "Arabe · Oriental", fam_floral: "Floral · Délicat", fam_woody: "Boisé · Mystérieux", fam_citrus: "Agrumes · Frais", fam_luxury: "Oriental · Luxueux", fam_marine: "Marin · Frais",
+    p1_name: "Âme du Rif", p1_notes: "Oud · Ambre · Musc Blanc · Santal",
+    p2_name: "Fleur de Taza", p2_notes: "Jasmin · Rose de Taïf · Musc Rosé · Vanille",
+    p3_name: "Nuit des Montagnes", p3_notes: "Santal · Cèdre · Tabac · Ambre",
+    p4_name: "Brise de l'Aube", p4_notes: "Bergamote · Néroli · Lavande · Bois de Forêt",
+    p5_name: "Secret de la Mariée", p5_notes: "Oud · Musc · Safran · Rose de Bulgarie",
+    p6_name: "Vagues d'Océan", p6_notes: "Sel Marin · Ozone · Santal Blanc · Camomille",
+    col_label: "Parcourir par", col_title: "Familles Olfactives",
+    col1_name: "Oriental & Arabe", col1_desc: "Parfums chauds et profonds, inspirés des souks arabes et de l'héritage authentique.",
+    col2_name: "Floral & Romantique", col2_desc: "Un bouquet des plus belles fleurs du monde, doux et féminin avec une touche marocaine.",
+    col3_name: "Boisé & Frais", col3_desc: "Un équilibre entre la profondeur du bois et la pureté de la nature pour un esprit libre.",
+    why_label: "Pourquoi Nous Choisir", why_title: "Notre Engagement Qualité",
+    why1_title: "Ingrédients Naturels", why1_desc: "Nous sélectionnons les meilleures matières premières depuis leurs origines à travers le monde.",
+    why2_title: "Fabrication Artisanale", why2_desc: "Chaque flacon est fabriqué avec soin et amour par nos maîtres parfumeurs.",
+    why3_title: "Livraison à Taza", why3_desc: "Livraison rapide dans toute la ville et tous les quartiers de Taza.",
+    why4_title: "Emballage Luxueux", why4_desc: "Chaque commande vous est livrée dans un élégant coffret cadeau.",
+    testi_label: "Avis de Nos Clients", testi_title: "Ce Qu'ils Disent",
+    t1_text: "Le parfum 'Âme du Rif' m'a accompagné toute la journée. Un parfum vraiment luxueux, authentiquement de Taza.", t1_name: "Fatima Zahra",
+    t2_text: "J'ai acheté 'Secret de la Mariée' comme cadeau de mariage, c'était le summum de l'élégance.", t2_name: "Mohammed Amine", t2_city: "Quartier Amal, Taza",
+    t3_text: "Enfin une parfumerie à Taza qui en vaut la peine. Les prix sont raisonnables et la qualité est internationale.", t3_name: "Nadia Benali", t3_city: "Bab Marrouj",
+    contact_label: "Nous Contacter", contact_title: "Visitez-nous à Taza",
+    address: "Avenue Mohammed V, Médina — Taza", hours: "Lundi – Samedi · 9h – 21h", whatsapp_btn: "Contacter via WhatsApp",
+    footer_about: "La parfumerie de luxe de Taza, spécialisée dans les fragrances marocaines et orientales.",
+    footer_links: "Liens Rapides", footer_collection: "Collection Complète", footer_families: "Familles Olfactives", footer_about_link: "À Propos", footer_contact: "Contactez-nous",
+    footer_services: "Services", svc1: "Emballage Cadeau", svc2: "Livraison à Domicile", svc3: "Parfum Personnalisé", svc4: "Commandes en Gros",
+    footer_copy: "© 2025 Maison des Parfums. Tous droits réservés.",
+    cart_added: "✦ Article ajouté au panier",
+    added_ame: "✦ Âme de Taza ajouté au panier", added_rif: "✦ Âme du Rif ajouté", added_fleur: "✦ Fleur de Taza ajoutée",
+    added_nuit: "✦ Nuit des Montagnes ajoutée", added_brise: "✦ Brise de l'Aube ajoutée", added_secret: "✦ Secret de la Mariée ajouté", added_vagues: "✦ Vagues d'Océan ajouté"
+  },
+  en: {
+    nav_sub: "TAZA — MOROCCO",
+    nav_collection: "Collections", nav_types: "Families", nav_about: "About", nav_contact: "Contact", nav_cart: "Cart",
+    hero_city: "Taza — Morocco", hero_title1: "The Art of", hero_title2: "Perfume",
+    hero_sub: "Exceptional fragrances inspired by the soul of the city and the depth of Moroccan heritage. From the Rif Mountains to the heart of Taza.",
+    hero_cta1: "Discover the Collection", hero_cta2: "Season's Fragrance",
+    feat_tag: "Special Edition", feat_label: "Season's Fragrance", feat_title: "Soul of Taza",
+    feat_desc: "A harmony between Oriental amber and Berber jasmine blossom, wrapped in oud wood and white musk. A fragrance that tells the story of a millennial city with every breath.",
+    currency: "MAD", add_cart: "Add to Cart",
+    prod_label: "Our Collection", prod_title: "Selected Fragrances", see_all: "View All",
+    badge_new: "New", badge_best: "Best-seller", badge_limited: "Limited",
+    fam_oriental: "Arabic · Oriental", fam_floral: "Floral · Delicate", fam_woody: "Woody · Mysterious", fam_citrus: "Citrus · Fresh", fam_luxury: "Oriental · Luxurious", fam_marine: "Marine · Fresh",
+    p1_name: "Soul of the Rif", p1_notes: "Oud · Amber · White Musk · Sandalwood",
+    p2_name: "Taza Blossom", p2_notes: "Jasmine · Taif Rose · Pink Musk · Vanilla",
+    p3_name: "Mountain Night", p3_notes: "Sandalwood · Cedar · Tobacco · Amber",
+    p4_name: "Dawn Breeze", p4_notes: "Bergamot · Neroli · Lavender · Forest Wood",
+    p5_name: "Bride's Secret", p5_notes: "Oud · Musk · Saffron · Bulgarian Rose",
+    p6_name: "Ocean Waves", p6_notes: "Sea Salt · Ozone · White Sandalwood · Chamomile",
+    col_label: "Browse by", col_title: "Fragrance Families",
+    col1_name: "Oriental & Arabic", col1_desc: "Warm and deep fragrances inspired by Arab souks and authentic heritage.",
+    col2_name: "Floral & Romantic", col2_desc: "A bouquet of the world's finest flowers, soft and feminine with a Moroccan touch.",
+    col3_name: "Woody & Fresh", col3_desc: "A balance between the depth of wood and the purity of nature for a free spirit.",
+    why_label: "Why Choose Us", why_title: "Our Quality Commitment",
+    why1_title: "Natural Ingredients", why1_desc: "We select the finest raw materials from their origins around the world.",
+    why2_title: "Artisan Craftsmanship", why2_desc: "Every bottle is crafted with care and love by our master perfumers.",
+    why3_title: "Delivery in Taza", why3_desc: "Fast delivery throughout the city and all neighborhoods of Taza.",
+    why4_title: "Luxury Packaging", why4_desc: "Every order arrives in an elegant gift box that reflects the value of your present.",
+    testi_label: "Customer Reviews", testi_title: "What They Say",
+    t1_text: "The 'Soul of the Rif' fragrance stayed with me all day. A truly luxurious perfume, authentically from Taza.", t1_name: "Fatima Zahra",
+    t2_text: "I bought 'Bride's Secret' as a wedding gift and it was the height of elegance. The packaging is magnificent.", t2_name: "Mohammed Amine", t2_city: "Amal District, Taza",
+    t3_text: "Finally a perfumery in Taza worth visiting. Prices are reasonable and quality is world-class.", t3_name: "Nadia Benali", t3_city: "Bab Marrouj",
+    contact_label: "Contact Us", contact_title: "Visit Us in Taza",
+    address: "Mohammed V Avenue, Medina — Taza", hours: "Monday – Saturday · 9am – 9pm", whatsapp_btn: "Contact via WhatsApp",
+    footer_about: "Taza's luxury perfumery, specializing in Moroccan and Oriental fragrances.",
+    footer_links: "Quick Links", footer_collection: "Full Collection", footer_families: "Fragrance Families", footer_about_link: "About Us", footer_contact: "Contact Us",
+    footer_services: "Services", svc1: "Gift Wrapping", svc2: "Home Delivery", svc3: "Custom Fragrance", svc4: "Wholesale Orders",
+    footer_copy: "© 2025 Maison des Parfums. All rights reserved.",
+    cart_added: "✦ Item added to cart",
+    added_ame: "✦ Soul of Taza added to cart", added_rif: "✦ Soul of the Rif added", added_fleur: "✦ Taza Blossom added",
+    added_nuit: "✦ Mountain Night added", added_brise: "✦ Dawn Breeze added", added_secret: "✦ Bride's Secret added", added_vagues: "✦ Ocean Waves added"
+  },
+  ar: {
+    nav_sub: "تازة — المغرب",
+    nav_collection: "المجموعات", nav_types: "الأنواع", nav_about: "من نحن", nav_contact: "تواصل", nav_cart: "السلة",
+    hero_city: "تازة — المغرب", hero_title1: "فن", hero_title2: "العطور",
+    hero_sub: "عطور فاخرة مستوحاة من روح المدينة وعمق التراث المغربي. من جبال الريف إلى قلب تازة.",
+    hero_cta1: "اكتشف المجموعة", hero_cta2: "عطر الموسم",
+    feat_tag: "إصدار خاص", feat_label: "عطر الموسم", feat_title: "نبضات تازة",
+    feat_desc: "تناغم بين عنبر الشرق وزهر الياسمين البربري، محاط بخشب العود والمسك الأبيض. عطر يحكي قصة مدينة عريقة في كل نفَس.",
+    currency: "درهم", add_cart: "أضف للسلة",
+    prod_label: "مجموعتنا", prod_title: "عطور مختارة", see_all: "عرض الكل",
+    badge_new: "جديد", badge_best: "الأكثر مبيعاً", badge_limited: "محدود",
+    fam_oriental: "عربي · شرقي", fam_floral: "زهري · ناعم", fam_woody: "خشبي · غامض", fam_citrus: "حمضي · منعش", fam_luxury: "أوريانتال · فاخر", fam_marine: "بحري · طازج",
+    p1_name: "روح الريف", p1_notes: "خشب العود · العنبر · المسك الأبيض · الصندل",
+    p2_name: "زهرة تازة", p2_notes: "الياسمين · الورد الطائفي · المسك الوردي · الفانيليا",
+    p3_name: "ليل جبلي", p3_notes: "الصندل · خشب الأرز · التبغ الدخاني · الكهرمان",
+    p4_name: "نسيم الفجر", p4_notes: "البرغموت · النيرولي · اللافندر · خشب الغابة",
+    p5_name: "سر العروس", p5_notes: "العود · المسك · الزعفران · الورد البلغاري",
+    p6_name: "أمواج طاطا", p6_notes: "الملح البحري · الأوزون · الصندل الأبيض · الأقحوان",
+    col_label: "تصفح حسب", col_title: "الأنواع والعوائل",
+    col1_name: "الشرقي والعربي", col1_desc: "عطور دافئة وعميقة، مستوحاة من الأسواق العربية والتراث الأصيل.",
+    col2_name: "الزهري والرومانسي", col2_desc: "باقة من أفخر الزهور العالمية، ناعمة وأنثوية بلمسة مغربية.",
+    col3_name: "الخشبي والطازج", col3_desc: "توازن بين عمق الخشب ونقاء الطبيعة لروح حرة ومتجددة.",
+    why_label: "لماذا نحن", why_title: "التزامنا بالجودة",
+    why1_title: "مكونات طبيعية", why1_desc: "نختار أجود المواد الخام من أصولها حول العالم.",
+    why2_title: "صنع يدوي", why2_desc: "كل زجاجة مصنوعة بعناية وحب من أيدي عطارينا.",
+    why3_title: "توصيل لتازة", why3_desc: "توصيل سريع داخل المدينة وجميع أحياء تازة.",
+    why4_title: "تغليف فاخر", why4_desc: "كل طلب يصلك في صندوق هدايا أنيق يعكس قيمة هديتك.",
+    testi_label: "آراء عملائنا", testi_title: "ماذا قالوا عنا",
+    t1_text: "ريحة 'روح الريف' بقات معايا النهار كامل. عطر فاخر بحق وحقيقي من تازة.", t1_name: "فاطمة الزهراء",
+    t2_text: "شريت 'سر العروس' كهدية للعرس وكان في قمة الأناقة. التغليف رائع والعطر أروع.", t2_name: "محمد أمين", t2_city: "حي الأمل، تازة",
+    t3_text: "أخيراً محل عطور بتازة يستاهل. الأسعار معقولة والجودة عالمية.", t3_name: "نادية بنعلي", t3_city: "باب المروج",
+    contact_label: "تواصل معنا", contact_title: "زورنا في تازة",
+    address: "شارع محمد الخامس، المدينة القديمة — تازة", hours: "من الإثنين إلى السبت · ٩ صباحاً — ٩ مساءً", whatsapp_btn: "تواصل عبر واتساب",
+    footer_about: "محل عطور تازة الفاخر المتخصص في العطور المغربية والشرقية.",
+    footer_links: "روابط سريعة", footer_collection: "المجموعة الكاملة", footer_families: "عوائل العطور", footer_about_link: "من نحن", footer_contact: "تواصل معنا",
+    footer_services: "خدمات", svc1: "تغليف هدايا", svc2: "توصيل منزلي", svc3: "عطر خاص بك", svc4: "طلبات الجملة",
+    footer_copy: "© ٢٠٢٥ بيت العطور. جميع الحقوق محفوظة.",
+    cart_added: "✦ تمت إضافة المنتج للسلة",
+    added_ame: "✦ تمت إضافة نبضات تازة", added_rif: "✦ تمت إضافة روح الريف", added_fleur: "✦ تمت إضافة زهرة تازة",
+    added_nuit: "✦ تمت إضافة ليل جبلي", added_brise: "✦ تمت إضافة نسيم الفجر", added_secret: "✦ تمت إضافة سر العروس", added_vagues: "✦ تمت إضافة أمواج طاطا"
   }
+};
 
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
+let currentLang = 'fr';
+
+function t(key) {
+  return translations[currentLang][key] || key;
+}
+
+function setLang(lang) {
+  currentLang = lang;
+  const body = document.body;
+  body.className = lang;
+  if (lang === 'ar') {
+    document.documentElement.lang = 'ar';
+    document.documentElement.dir = 'rtl';
+  } else {
+    document.documentElement.lang = lang;
+    document.documentElement.dir = 'ltr';
+  }
+  document.querySelectorAll('[data-key]').forEach(el => {
+    const key = el.getAttribute('data-key');
+    if (translations[lang][key] !== undefined) {
+      el.textContent = translations[lang][key];
+    }
   });
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toast._timer);
+  toast._timer = setTimeout(() => toast.classList.remove('show'), 2800);
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
 </script>
 </body>
 </html>
